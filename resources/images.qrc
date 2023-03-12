@@ -155,5 +155,8 @@
         <file>images/robot_yellow.png</file>
         <file>images/cursor_mutile_pose.png</file>
         <file>images/rsf.png</file>
+        <file>images/github40x20.png</file>
+        <file>images/github.png</file>
+        <file>images/github_transparent.png</file>
     </qresource>
 </RCC>

@@ -3,33 +3,34 @@
 
 #include <QWidget>
 
-namespace Ui {
+namespace Ui
+{
 class Joystick;
 }
-
 
 class Joystick : public QWidget
 {
     Q_OBJECT
-public:
+  public:
     explicit Joystick(QWidget *parent = nullptr);
     int getX() const;
     int getY() const;
     void setKeepInBounds(bool enable);
 
-signals:
-    void getxy(int x,int y);
+  signals:
+    void getxy(int x, int y);
 
-protected:
+  protected:
     void paintEvent(QPaintEvent *event) override;
     void mousePressEvent(QMouseEvent *event) override;
     void mouseMoveEvent(QMouseEvent *event) override;
     void mouseReleaseEvent(QMouseEvent *event) override;
 
-private:
+  private:
     QPoint centerPoint;
     QPoint currentPoint;
     bool isPressed = false;
     bool keepInBounds; // 新增成员变量
 };
+
 #endif // JOYSTICK_H

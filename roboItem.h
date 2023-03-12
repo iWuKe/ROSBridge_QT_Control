@@ -16,80 +16,89 @@
 
 #include "RobotAlgorithm.h"
 */
-namespace Ui {
-enum eRobotColor { blue, red, yellow, rongshifu, car };
+namespace Ui
+{
+enum eRobotColor { blue,
+                   red,
+                   yellow,
+                   rongshifu,
+                   car };
 
-class roboItem : public QObject, public QGraphicsItem {
-  Q_OBJECT
-  Q_INTERFACES(QGraphicsItem)
+class roboItem : public QObject, public QGraphicsItem
+{
+    Q_OBJECT
+    Q_INTERFACES(QGraphicsItem)
 
- public:
-  roboItem();
-  QRectF boundingRect() const;
-  void wheelEvent(QGraphicsSceneWheelEvent *event);
-  void mousePressEvent(QGraphicsSceneMouseEvent *event);
-  void mouseMoveEvent(QGraphicsSceneMouseEvent *event);
-  void mouseReleaseEvent(QGraphicsSceneMouseEvent *event);
-  void hoverMoveEvent(QGraphicsSceneHoverEvent *event);
-  void paint(QPainter *painter, const QStyleOptionGraphicsItem *option,
-             QWidget *widget);
-  int QColorToInt(const QColor &color);
-  void setRobotColor(eRobotColor color);
-  void setRobotSize(QSize size);
-  QPolygon MapPoints;
-  QPolygonF plannerPath;
-  QPolygonF laserPoints;
-  QPointF RoboPostion;
-  QSizeF mapSize;
-  QImage m_image;
-  QImage m_imageMap;
-  QTimer timer_update;
-  int m_sizeCar = 4;
-  double m_roboYaw;
-  double m_roboR = 5;
-  double map_size = 1;
-  double defaultScale = 2;
-  double PI = 3.1415926;
-  void get_version() { qDebug() << "1.0.0"; }
-  void setMax();
-  void setMin();
-  void setDefault();
-  void move(double x, double y);
-  QCursor *m_moveCursor = NULL;
-  QCursor *set2DPoseCursor = NULL;
-  QCursor *set2DGoalCursor = NULL;
-  QCursor *m_currCursor = NULL;
- signals:
-  void cursorPos(QPointF);
-  void signalPub2DPose(QPointF,QPointF);
-  void signalPub2DGoal(QPointF,QPointF);
- public slots:
-  void paintMaps(QImage map);
-  void paintRoboPos(double x,double y,double theta);
-  void paintImage(int, QImage);
-  void paintPlannerPath(QPolygonF);
-  void paintLaserScan(QPolygonF);
-  void slot_set2DPos();
-  void slot_set2DGoal();
-  void slot_setMoveCamera();
+  public:
+    roboItem();
+    QRectF boundingRect() const;
+    void wheelEvent(QGraphicsSceneWheelEvent *event);
+    void mousePressEvent(QGraphicsSceneMouseEvent *event);
+    void mouseMoveEvent(QGraphicsSceneMouseEvent *event);
+    void mouseReleaseEvent(QGraphicsSceneMouseEvent *event);
+    void hoverMoveEvent(QGraphicsSceneHoverEvent *event);
+    void paint(QPainter *painter, const QStyleOptionGraphicsItem *option,
+               QWidget *widget);
+    int QColorToInt(const QColor &color);
+    void setRobotColor(eRobotColor color);
+    void setRobotSize(QSize size);
+    QPolygon MapPoints;
+    QPolygonF plannerPath;
+    QPolygonF laserPoints;
+    QPointF RoboPostion;
+    QSizeF mapSize;
+    QImage m_image;
+    QImage m_imageMap;
+    QTimer timer_update;
+    int m_sizeCar = 4;
+    double m_roboYaw;
+    double m_roboR = 5;
+    double map_size = 1;
+    double defaultScale = 2;
+    double PI = 3.1415926;
+    void get_version() { qDebug() << "1.0.0"; }
+    void setMax();
+    void setMin();
+    void setDefault();
+    void move(double x, double y);
+    QCursor *m_moveCursor = NULL;
+    QCursor *set2DPoseCursor = NULL;
+    QCursor *set2DGoalCursor = NULL;
+    QCursor *m_currCursor = NULL;
+  signals:
+    void cursorPos(QPointF);
+    void signalPub2DPose(QPointF, QPointF);
+    void signalPub2DGoal(QPointF, QPointF);
 
- private:
-  void drawMap(QPainter *painter);
-  void drawRoboPos(QPainter *painter);
-  void drawLaserScan(QPainter *painter);
-  void drawPlannerPath(QPainter *painter);
-  void drawTools(QPainter *painter);
+  public slots:
+    void paintMaps(QImage map);
+    void paintRoboPos(double x, double y, double theta);
+    void paintImage(int, QImage);
+    void paintPlannerPath(QPolygonF);
+    void paintLaserScan(QPolygonF);
+    void slot_set2DPos();
+    void slot_set2DGoal();
+    void slot_setMoveCamera();
 
- private:
-  int m_zoomState;
-  bool m_isMousePress{false};
-  QPixmap robotImg;
-  QPointF m_startPose;
-  QPointF m_endPose;
-  QPointF m_pressedPoint = QPointF(0, 0);
-  QPointF m_pressingPoint = QPointF(0, 0);
-  qreal m_scaleValue = 1;
-  qreal m_scaleDafault = 1;
+  private:
+    void drawMap(QPainter *painter);
+    void drawRoboPos(QPainter *painter);
+    void drawLaserScan(QPainter *painter);
+    void drawPlannerPath(QPainter *painter);
+    void drawTools(QPainter *painter);
+
+  private:
+    int m_zoomState;
+    bool m_isMousePress{false};
+    bool m_isRightMousePress = false; // 是否鼠标右键
+    QPixmap robotImg;
+    QPointF m_startPose;
+    QPointF m_endPose;
+    QPointF m_pressedPoint = QPointF(0, 0);
+    QPointF m_pressingPoint = QPointF(0, 0);
+    qreal m_scaleValue = 1;
+    qreal m_scaleDafault = 1;
+    QPointF m_lastPos; // 用来继续右键旋转的量
 };
-}
-#endif  // roboItem_H
+} // namespace Ui
+#endif // roboItem_H
