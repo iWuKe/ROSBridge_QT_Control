@@ -26,7 +26,8 @@
 ## 其他
 
 1. 项目参考借鉴了古月居的部分代码https://github.com/chengyangkj/Ros_Qt5_Gui_App
-2. 如果您想讨论或者能完善部分功能，欢迎与我建立联系
+2. ROSBridge V2https://github.com/RobotWebTools/rosbridge_suite/blob/groovy-devel/ROSBRIDGE_PROTOCOL.md
+3. 如果您想讨论或者能完善部分功能，欢迎与我建立联系
 
 ## 更新-20230312
 1. 新增了路径显示，优化了View，使其可以旋转。
