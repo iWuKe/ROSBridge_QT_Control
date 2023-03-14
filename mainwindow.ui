@@ -614,8 +614,16 @@ QComboBox QAbstractItemView {
            <string/>
           </property>
           <property name="styleSheet">
-           <string notr="true">border: 2px solid gray; /* 设置边框宽度和颜色 */
-</string>
+           <string notr="true">QPlainTextEdit{
+ border: 2px solid gray; /* 设置边框宽度和颜色 */
+ color:black;
+}
+/*
+在样式表中设置带有placeholderText属性的控件的颜色和边框样式
+*/
+QPlainTextEdit::placeholderText{
+ color: gray;
+}</string>
           </property>
           <property name="plainText">
            <string/>
@@ -819,7 +827,7 @@ QComboBox QAbstractItemView {
   border-radius: 10px; /* 设置电池边框的圆角半径 */
   background-color: white; /* 设置电池内部填充颜色 */
   height: 30px; /* 设置电池的高度，根据需要调整 */
-  color:rgb(0, 0, 0)；
+  color:black;
 }
 
 /* 设置电池填充的样式，使用 qproperty-value 属性指定当前进度值 */

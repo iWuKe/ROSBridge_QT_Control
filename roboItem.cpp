@@ -221,14 +221,14 @@ void roboItem::wheelEvent(QGraphicsSceneWheelEvent *event)
             m_scaleValue *= 0.9; // 每次缩小10%
         }
         setScale(m_scaleValue);
+        // 为解决在超过+-90°后缩放异常，将鼠标所在点的坐标从视图坐标系转换为场景坐标系，试过了，并没卵用
+        //QPointF mousePos = mapToScene(event->pos());//要使用的话要修改if里面（不包含条件）的event为mousePos
         if (event->delta() > 0) {
             moveBy(-event->pos().x() * qrealOriginScale * 0.1,
-                   -event->pos().y() * qrealOriginScale *
-                       0.1); // 使图片缩放的效果看起来像是以鼠标所在点为中心进行缩放的
+                   -event->pos().y() * qrealOriginScale * 0.1); // 使图片缩放的效果看起来像是以鼠标所在点为中心进行缩放的
         } else {
             moveBy(event->pos().x() * qrealOriginScale * 0.1,
-                   event->pos().y() * qrealOriginScale *
-                       0.1); // 使图片缩放的效果看起来像是以鼠标所在点为中心进行缩放的
+                   event->pos().y() * qrealOriginScale * 0.1); // 使图片缩放的效果看起来像是以鼠标所在点为中心进行缩放的
         }
     }
 }

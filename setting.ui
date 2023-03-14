@@ -47,7 +47,10 @@ QLineEdit {
   padding: 2px 4px; /* 设置内边距 */
   background-color: white;
 }
-</string>
+
+QCheckBox {
+ color:black;
+}</string>
   </property>
   <layout class="QGridLayout" name="gridLayout_2">
    <item row="0" column="0">
