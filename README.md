@@ -32,7 +32,7 @@
 
 1. 项目参考借鉴了古月居的部分代码，https://github.com/chengyangkj/Ros_Qt5_Gui_App
 2. ROSBridge V2协议，https://github.com/RobotWebTools/rosbridge_suite/blob/groovy-devel/ROSBRIDGE_PROTOCOL.md
-3. 综合本程序总结，使用ROS开发一款ROSBridge控制软件，本质上是使用websocket方式，通过json数据订阅和发送消息，并将订阅的东西展示出来，当然，运行ROS的设备需要有ROSBridge功能包并启动了ROSBridge服务。除了websocket外，还有tcp，udp方式，但我都没试过，想来应该是类似的
+3. 综合本程序总结，使用ROSBridge开发一款ROS控制软件，本质上是使用websocket方式，通过json数据订阅和发送消息，并将订阅的东西展示出来，当然，运行ROS的设备需要有ROSBridge功能包并启动了ROSBridge服务。除了websocket外，还有tcp，udp方式，但我都没试过，想来应该是类似的
 4. 如果您想讨论或者能完善部分功能，欢迎与我建立联系
 
 ## 更新-20230312
